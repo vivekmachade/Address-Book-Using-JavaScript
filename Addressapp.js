@@ -38,6 +38,7 @@ class AddressBook {
 const addressBook = new AddressBook();
 try {
     addressBook.addContact(new Addressapp("Vivek", "Machade", "Vard no 8", "BHOPAl", "Ashoka garban", "10001", "1234567890", "vivek@example.com"));
+	addressBook.addContact(new Addressapp("Vivek", "yadav", "ward no 8", "BHOPAl", "Ashoka garban", "10001", "1234567890", "vivek@example.com"));
 } catch (error) {
     console.error(error.message);
 }

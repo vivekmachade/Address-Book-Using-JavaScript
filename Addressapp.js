@@ -26,6 +26,11 @@ class AddressBook {
     }
 
     addContact(contact) {
+        let duplicate = this.contacts.filter(c => c.firstName === contact.firstName && c.lastName === contact.lastName);
+        if (duplicate.length > 0) {
+            console.log("Duplicate Contact Found! Contact not added.");
+            return;
+        }
         this.contacts.push(contact);
     }
 
@@ -55,18 +60,9 @@ class AddressBook {
 const addressBook = new AddressBook();
 try {
     addressBook.addContact(new AddressApp("Vivek", "Machade", "Ward No 8", "Bhopal", "MP", "10001", "1234567890", "vivek@example.com"));
+    addressBook.addContact(new AddressApp("Vivek", "Machade", "Ward No 8", "Bhopal", "MP", "10001", "1234567890", "vivek@example.com")); // Duplicate entry
 } catch (error) {
     console.error("Error:", error.message);
 }
-
-// Editing a contact
-try {
-    addressBook.editContact("Vivek", new AddressApp("Vivek", "Sharma", "New Address", "Indore", "MP", "452001", "9876543210", "vivek.sharma@example.com"));
-} catch (error) {
-    console.error("Error:", error.message);
-}
-
-// Deleting a contact
-addressBook.deleteContact("Vivek");
 
 console.log("Total Contacts:", addressBook.getContactCount());

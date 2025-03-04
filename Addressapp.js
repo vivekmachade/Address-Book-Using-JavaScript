@@ -75,9 +75,9 @@ class AddressBook {
         }, {});
     }
 
-    sortByName() {
-        this.contacts.sort((a, b) => a.firstName.localeCompare(b.firstName));
-        console.log("Sorted Contacts:", this.contacts.map(contact => contact.toString()).join("\n"));
+    sortByField(field) {
+        this.contacts.sort((a, b) => a[field].localeCompare(b[field]));
+        console.log(`Sorted Contacts by ${field}:`, this.contacts.map(contact => contact.toString()).join("\n"));
     }
 }
 
@@ -94,5 +94,7 @@ console.log("Search Results for 'MP':", addressBook.searchByCityOrState("MP"));
 console.log("View Persons by City/State:", addressBook.viewByCityOrState());
 console.log("Count by City/State:", addressBook.countByCityOrState());
 
-// Sorting contacts by name
-addressBook.sortByName();
+// Sorting contacts by City, State, or Zip
+addressBook.sortByField("city");
+addressBook.sortByField("state");
+addressBook.sortByField("zip");

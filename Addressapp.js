@@ -41,6 +41,10 @@ class AddressBook {
             console.log("Contact not found");
         }
     }
+
+    deleteContact(name) {
+        this.contacts = this.contacts.filter(contact => contact.firstName !== name);
+    }
 }
 
 // Example Usage
@@ -57,5 +61,8 @@ try {
 } catch (error) {
     console.error("Error:", error.message);
 }
+
+// Deleting a contact
+addressBook.deleteContact("Vivek");
 
 console.log(addressBook.getContacts());

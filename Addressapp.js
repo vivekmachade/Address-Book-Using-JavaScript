@@ -54,15 +54,19 @@ class AddressBook {
     getContactCount() {
         return this.contacts.reduce(count => count + 1, 0);
     }
+
+    searchByCityOrState(cityOrState) {
+        return this.contacts.filter(contact => contact.city === cityOrState || contact.state === cityOrState);
+    }
 }
 
 // Example Usage
 const addressBook = new AddressBook();
 try {
     addressBook.addContact(new AddressApp("Vivek", "Machade", "Ward No 8", "Bhopal", "MP", "10001", "1234567890", "vivek@example.com"));
-    addressBook.addContact(new AddressApp("Vivek", "Machade", "Ward No 8", "Bhopal", "MP", "10001", "1234567890", "vivek@example.com")); // Duplicate entry
+    addressBook.addContact(new AddressApp("Rahul", "Sharma", "Street 45", "Indore", "MP", "452001", "9876543210", "rahul@example.com"));
 } catch (error) {
     console.error("Error:", error.message);
 }
 
-console.log("Total Contacts:", addressBook.getContactCount());
+console.log("Search Results for 'MP':", addressBook.searchByCityOrState("MP"));

@@ -18,6 +18,10 @@ class AddressApp {
         this.phone = phone;
         this.email = email;
     }
+
+    toString() {
+        return `${this.firstName} ${this.lastName}, ${this.address}, ${this.city}, ${this.state}, ${this.zip}, ${this.phone}, ${this.email}`;
+    }
 }
 
 class AddressBook {
@@ -70,6 +74,11 @@ class AddressBook {
             return acc;
         }, {});
     }
+
+    sortByName() {
+        this.contacts.sort((a, b) => a.firstName.localeCompare(b.firstName));
+        console.log("Sorted Contacts:", this.contacts.map(contact => contact.toString()).join("\n"));
+    }
 }
 
 // Example Usage
@@ -84,3 +93,6 @@ try {
 console.log("Search Results for 'MP':", addressBook.searchByCityOrState("MP"));
 console.log("View Persons by City/State:", addressBook.viewByCityOrState());
 console.log("Count by City/State:", addressBook.countByCityOrState());
+
+// Sorting contacts by name
+addressBook.sortByName();

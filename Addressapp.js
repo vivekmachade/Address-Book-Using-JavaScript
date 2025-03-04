@@ -58,6 +58,10 @@ class AddressBook {
     searchByCityOrState(cityOrState) {
         return this.contacts.filter(contact => contact.city === cityOrState || contact.state === cityOrState);
     }
+
+    viewByCityOrState() {
+        return this.contacts.map(contact => ({ name: `${contact.firstName} ${contact.lastName}`, city: contact.city, state: contact.state }));
+    }
 }
 
 // Example Usage
@@ -70,3 +74,4 @@ try {
 }
 
 console.log("Search Results for 'MP':", addressBook.searchByCityOrState("MP"));
+console.log("View Persons by City/State:", addressBook.viewByCityOrState());

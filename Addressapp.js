@@ -45,6 +45,10 @@ class AddressBook {
     deleteContact(name) {
         this.contacts = this.contacts.filter(contact => contact.firstName !== name);
     }
+
+    getContactCount() {
+        return this.contacts.reduce(count => count + 1, 0);
+    }
 }
 
 // Example Usage
@@ -65,4 +69,4 @@ try {
 // Deleting a contact
 addressBook.deleteContact("Vivek");
 
-console.log(addressBook.getContacts());
+console.log("Total Contacts:", addressBook.getContactCount());
